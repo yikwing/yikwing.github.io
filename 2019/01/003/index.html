@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>使用Aria2&#43;Aria2Ng&#43;OneIndex&#43;OneDrive建立不限流量/离线BT下载/在线观看网盘 | LoveIt Theme</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="LoveIt Theme Demo">
+<link rel="prev" href="https://yikwing.github.io/2018/03/005/" />
+<link rel="next" href="https://yikwing.github.io/2019/02/006/" />
+<link rel="canonical" href="https://yikwing.github.io/2019/01/003/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用Aria2&#43;Aria2Ng&#43;OneIndex&#43;OneDrive建立不限流量/离线BT下载/在线观看网盘"/>
+<meta name="twitter:description" content="宝塔  1 2 3 4 5 6 7 8  #Centos系统 yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install.sh &amp;&amp; sh install.sh #Ubuntu系统 wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh &amp;&amp; sudo bash install.sh #Debian系统 wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh &amp;&amp; bash install.sh   这里只需要安装 Nginx 和 php5.6 就可以了，其他 FTP，Mysql 不需要
+ 安装 Aria2  1 2 3  wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/aria2.sh &amp;&amp; chmod &#43;x aria2.sh &amp;&amp; bash aria2.sh #备用地址 wget -N --no-check-certificate https://www."/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "使用Aria2\x2bAria2Ng\x2bOneIndex\x2bOneDrive建立不限流量\/离线BT下载\/在线观看网盘",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/yikwing.github.io\/2019\/01\/003\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/yikwing.github.io\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "onedrive, oneindex",
+    
+    "wordcount":  196 ,
+    "url": "https:\/\/yikwing.github.io\/2019\/01\/003\/",
+    
+        "datePublished": "2019-01-22T09:58:17\x2b00:00",
+    
+    
+        "dateModified": "2019-01-22T09:58:17\x2b00:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "XXXX",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/yikwing.github.io\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://yikwing.github.io/">LoveIt Theme</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://yikwing.github.io/">LoveIt Theme</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">使用Aria2&#43;Aria2Ng&#43;OneIndex&#43;OneDrive建立不限流量/离线BT下载/在线观看网盘</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://yikwing.github.io/" rel="author"><i class="fas fa-user-circle fa-fw"></i>yikwing&nbsp;</a>
+                
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-01-22>2019-01-22</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 196 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>1 min&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <ul>
+<li>宝塔</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#Centos系统</span>
+yum install -y wget <span class="o">&amp;&amp;</span> wget -O install.sh http://download.bt.cn/install/install.sh <span class="o">&amp;&amp;</span> sh install.sh
+
+<span class="c1">#Ubuntu系统</span>
+wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh <span class="o">&amp;&amp;</span> sudo bash install.sh
+
+<span class="c1">#Debian系统</span>
+wget -O install.sh http://download.bt.cn/install/install-ubuntu.sh <span class="o">&amp;&amp;</span> bash install.sh
+</code></pre></td></tr></table>
+</div>
+</div><p>这里只需要安装 Nginx 和 php5.6 就可以了，其他 FTP，Mysql 不需要</p>
+<ul>
+<li>安装 Aria2</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/aria2.sh <span class="o">&amp;&amp;</span> chmod +x aria2.sh <span class="o">&amp;&amp;</span> bash aria2.sh
+<span class="c1">#备用地址</span>
+wget -N --no-check-certificate https://www.moerats.com/usr/shell/Aria2/aria2.sh <span class="o">&amp;&amp;</span> chmod +x aria2.sh <span class="o">&amp;&amp;</span> bash aria2.sh
+</code></pre></td></tr></table>
+</div>
+</div><p>选择 1，安装 aria2 后一路 yes 就可以了。最后会出来一个密钥，记下来</p>
+<ul>
+<li>安装 ArinanNG 和 oneindex</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># NG</span>
+https://github.com/mayswind/AriaNg/releases/download/1.0.0/AriaNg-1.0.0.zip
+
+<span class="c1"># oneIndex</span>
+https://github.com/donwa/oneindex/archive/master.zip
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>编辑配置文件</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">dir</span><span class="o">=</span>/Download
+on-download-complete<span class="o">=</span>/root/upload2one.sh
+</code></pre></td></tr></table>
+</div>
+</div><p>自动上传 OneDrive</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="cp">#!/bin/bash
+</span><span class="cp"></span><span class="nv">path</span><span class="o">=</span><span class="nv">$3</span>
+<span class="nv">downloadpath</span><span class="o">=</span><span class="s1">&#39;/Download&#39;</span>
+<span class="k">if</span> <span class="o">[</span><span class="o">[</span> <span class="nv">$2</span> -eq <span class="m">0</span> <span class="o">]</span><span class="o">]</span>
+       <span class="k">then</span>
+               <span class="nb">exit</span> <span class="m">0</span>
+<span class="k">fi</span>
+<span class="k">while</span> true<span class="p">;</span> <span class="k">do</span>  <span class="c1">#提取下载文件根路径，如把/root/downloads/a/b/c/d.jpg变成/root/downloads/a</span>
+<span class="nv">filepath</span><span class="o">=</span><span class="nv">$path</span>
+<span class="nv">path</span><span class="o">=</span><span class="si">${</span><span class="nv">path</span><span class="p">%/*</span><span class="si">}</span><span class="p">;</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$path</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="nv">$downloadpath</span><span class="s2">&#34;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="o">[</span> <span class="nv">$2</span> -eq <span class="m">1</span> <span class="o">]</span>  <span class="c1">#如果下载的是单个文件</span>
+   <span class="k">then</span>
+   /www/server/php/72/bin/php /www/wwwroot/你的ip或者域名/one/one.php upload:file <span class="s2">&#34;</span><span class="nv">$filepath</span><span class="s2">&#34;</span> /upload/
+   rm -rf <span class="s2">&#34;</span><span class="nv">$filepath</span><span class="s2">&#34;</span>
+   <span class="nb">exit</span> <span class="m">0</span>
+<span class="k">elif</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="nv">$path</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;</span><span class="nv">$downloadpath</span><span class="s2">&#34;</span> <span class="o">]</span>   <span class="c1">#文件夹</span>
+   <span class="k">then</span>
+   /www/server/php/72/bin/php /www/wwwroot/你的ip或者域名/one/one.php upload:folder <span class="s2">&#34;</span><span class="nv">$filepath</span><span class="s2">&#34;</span>/ /upload/<span class="s2">&#34;</span><span class="si">${</span><span class="nv">filepath</span><span class="p">##*/</span><span class="si">}</span><span class="s2">&#34;</span>/
+   rm -rf <span class="s2">&#34;</span><span class="nv">$filepath</span><span class="s2">&#34;</span>/
+   <span class="nb">exit</span> <span class="m">0</span>
+<span class="k">fi</span>
+<span class="k">done</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>赋予权限,重启 aria2NG</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">chmod +x /root/upload2one.sh
+
+./aria2.sh
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>This article is updated with 2019-01-22</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://yikwing.github.io/2019/01/003/index.md" target="_blank"></a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2fyikwing.github.io%2f2019%2f01%2f003%2f&amp;text=%e4%bd%bf%e7%94%a8Aria2%2bAria2Ng%2bOneIndex%2bOneDrive%e5%bb%ba%e7%ab%8b%e4%b8%8d%e9%99%90%e6%b5%81%e9%87%8f%2f%e7%a6%bb%e7%ba%bfBT%e4%b8%8b%e8%bd%bd%2f%e5%9c%a8%e7%ba%bf%e8%a7%82%e7%9c%8b%e7%bd%91%e7%9b%98&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fyikwing.github.io%2f2019%2f01%2f003%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2fyikwing.github.io%2f2019%2f01%2f003%2f&amp;title=%e4%bd%bf%e7%94%a8Aria2%2bAria2Ng%2bOneIndex%2bOneDrive%e5%bb%ba%e7%ab%8b%e4%b8%8d%e9%99%90%e6%b5%81%e9%87%8f%2f%e7%a6%bb%e7%ba%bfBT%e4%b8%8b%e8%bd%bd%2f%e5%9c%a8%e7%ba%bf%e8%a7%82%e7%9c%8b%e7%bd%91%e7%9b%98" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/onedrive/"><i class="fas fa-tag fa-fw"></i>onedrive</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/oneindex/"><i class="fas fa-tag fa-fw"></i>oneindex</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://yikwing.github.io/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://yikwing.github.io/2018/03/005/" class="prev" rel="prev" title="ubuntu从零开始搭建爬虫框架"><i class="fas fa-angle-left fa-fw"></i>ubuntu从零开始搭建爬虫框架</a>
+        
+        
+            <a href="https://yikwing.github.io/2019/02/006/" class="next" rel="next" title="gradle 测试/正式包同时安装,BuildConfig 配置小技巧">gradle 测试/正式包同时安装,BuildConfig 配置小技巧<i class="fas fa-angle-right fa-fw"></i></a>
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a>&nbsp;|&nbsp;Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://yikwing.github.io/">yikwing</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

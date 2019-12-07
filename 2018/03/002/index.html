@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>MySql服务安装及命令使用 | LoveIt Theme</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="LoveIt Theme Demo">
+<link rel="next" href="https://yikwing.github.io/2018/03/001/" />
+<link rel="canonical" href="https://yikwing.github.io/2018/03/002/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MySql服务安装及命令使用"/>
+<meta name="twitter:description" content="安装 MySql 服务  mac  1  brew install mysql    linux  1 2  sudo apt-get insatll mysql-server sudo apt-get install mysql-client    修改密码 1 2 3 4 5 6 7 8  sudo mysqld_safe --skin-grant-tables --skip-networking &amp;  &gt; use mysql &gt; update user set authentication_string=password(&#39;新密码&#39;), plugin=&#39;mysql_native_password&#39; where user = &#39;root&#39; &gt; flush privileges &gt; quit    mysql 设置远程访问  sudo vim /etc/mysql/mysql."/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "MySql服务安装及命令使用",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/yikwing.github.io\/2018\/03\/002\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/yikwing.github.io\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "hexo, sql, mysql",
+    
+    "wordcount":  187 ,
+    "url": "https:\/\/yikwing.github.io\/2018\/03\/002\/",
+    
+        "datePublished": "2018-03-03T11:19:11\x2b00:00",
+    
+    
+        "dateModified": "2018-03-03T11:19:11\x2b00:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "XXXX",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/yikwing.github.io\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://yikwing.github.io/">LoveIt Theme</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://yikwing.github.io/">LoveIt Theme</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">MySql服务安装及命令使用</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://yikwing.github.io/" rel="author"><i class="fas fa-user-circle fa-fw"></i>yikwing&nbsp;</a>
+                
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2018-03-03>2018-03-03</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 187 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>1 min&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="-mysql-"></a><h2>安装 MySql 服务</h2>
+<ul>
+<li>mac</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">brew install mysql
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>linux</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get insatll mysql-server
+sudo apt-get install mysql-client
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<a class="post-dummy-target" id="heading"></a><h2>修改密码</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql">
+<span class="n">sudo</span> <span class="n">mysqld_safe</span> <span class="c1">--skin-grant-tables --skip-networking &amp;
+</span><span class="c1"></span>
+<span class="o">&gt;</span> <span class="n">use</span> <span class="n">mysql</span>
+<span class="o">&gt;</span> <span class="k">update</span> <span class="k">user</span> <span class="k">set</span> <span class="n">authentication_string</span><span class="o">=</span><span class="n">password</span><span class="p">(</span><span class="s1">&#39;</span><span class="s1">新密码</span><span class="s1">&#39;</span><span class="p">)</span><span class="p">,</span>
+<span class="n">plugin</span><span class="o">=</span><span class="s1">&#39;</span><span class="s1">mysql_native_password</span><span class="s1">&#39;</span> <span class="k">where</span> <span class="k">user</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s1">root</span><span class="s1">&#39;</span>
+<span class="o">&gt;</span> <span class="n">flush</span> <span class="k">privileges</span>
+<span class="o">&gt;</span> <span class="n">quit</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<a class="post-dummy-target" id="mysql-"></a><h2>mysql 设置远程访问</h2>
+<ol>
+<li>sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</li>
+<li>注释掉 &lsquo;#bind-address = 127.0.0.1&rsquo;</li>
+<li>进入 mysql</li>
+<li>GRANT ALL PRIVILEGES ON <em>.</em> TO &lsquo;username&rsquo;@'%&rsquo; IDENTIFIED BY &lsquo;password&rsquo; WITH GRANT OPTION;</li>
+<li>flush PRIVILEGES</li>
+<li>退出并重启 mysql</li>
+</ol>
+<hr>
+<a class="post-dummy-target" id="-mysql-1"></a><h2>启动 MySql 服务</h2>
+<ul>
+<li>mac</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 启动mysql服务</span>
+mysql.server start
+
+<span class="c1"># 关闭mysql服务</span>
+mysql.server stop
+
+<span class="c1">#连接mysql数据库</span>
+sudo mysql -h host<span class="o">(</span>主机地址<span class="o">)</span> -u user<span class="o">(</span>用户名<span class="o">)</span>  -p
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>linux</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 启动mysql服务</span>
+sudo service mysql start
+
+<span class="c1"># 关闭mysql服务</span>
+sudo service mysql start
+
+<span class="c1">#连接mysql数据库</span>
+sudo mysql -u root<span class="o">(</span>用户名<span class="o">)</span> -p password<span class="o">(</span>密码<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<a class="post-dummy-target" id="ssh-"></a><h2>ssh 远程连接</h2>
+<ol>
+<li>虚拟机使用桥接模式</li>
+<li>sudo apt-get install ssh</li>
+<li>ssh username@host</li>
+</ol>
+<hr>
+<a class="post-dummy-target" id="heading1"></a><h2>输入查询</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">VERSION</span><span class="p">(</span><span class="p">)</span><span class="p">,</span><span class="k">CURRENT_DATE</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/document-uid73259labid1238timestamp1438158105657.png?watermark/1/image/aHR0cDovL3N5bC1zdGF0aWMucWluaXVkbi5jb20vaW1nL3dhdGVybWFyay5wbmc=/dissolve/60/gravity/SouthEast/dx/0/dy/10" alt="此处输入图片的描述"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">SIN</span><span class="p">(</span><span class="n">PI</span><span class="p">(</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="p">,</span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="p">;</span>
+
+<span class="o">#</span> <span class="err">如</span><span class="err">果</span><span class="err">你</span><span class="err">决</span><span class="err">定</span><span class="err">不</span><span class="err">想</span><span class="err">执</span><span class="err">行</span><span class="err">正</span><span class="err">在</span><span class="err">输</span><span class="err">入</span><span class="err">过</span><span class="err">程</span><span class="err">中</span><span class="err">的</span><span class="err">一</span><span class="err">个</span><span class="err">命</span><span class="err">令</span><span class="err">，</span><span class="err">输</span><span class="err">入</span><span class="o">`</span><span class="err">\</span><span class="k">c</span><span class="o">`</span><span class="err">取</span><span class="err">消</span><span class="err">它</span><span class="err">：</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/document-uid73259labid1238timestamp1438158281502.png?watermark/1/image/aHR0cDovL3N5bC1zdGF0aWMucWluaXVkbi5jb20vaW1nL3dhdGVybWFyay5wbmc=/dissolve/60/gravity/SouthEast/dx/0/dy/10" alt="此处输入图片的描述"></p>
+<a class="post-dummy-target" id="heading2"></a><h2>创建表</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">mysql</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">pet</span> <span class="p">(</span><span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="p">,</span> <span class="k">owner</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="p">,</span>
+    <span class="o">-</span><span class="o">&gt;</span> <span class="n">species</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="p">,</span> <span class="n">sex</span> <span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="p">,</span> <span class="n">birth</span> <span class="nb">DATE</span><span class="p">,</span> <span class="n">death</span> <span class="nb">DATE</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="heading3"></a><h2>显示数据表</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mysql&gt; DESCRIBE pet<span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/document-uid73259labid1239timestamp1438163082069.png?watermark/1/image/aHR0cDovL3N5bC1zdGF0aWMucWluaXVkbi5jb20vaW1nL3dhdGVybWFyay5wbmc=/dissolve/60/gravity/SouthEast/dx/0/dy/10" alt="此处输入图片的描述"></p>
+<hr>
+<a class="post-dummy-target" id="distinct"></a><h2>过滤数据表(distinct)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span> <span class="k">distinct</span> <span class="k">owner</span> <span class="k">from</span> <span class="n">pet</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>This article is updated with 2018-03-03</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://yikwing.github.io/2018/03/002/index.md" target="_blank"></a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2fyikwing.github.io%2f2018%2f03%2f002%2f&amp;text=MySql%e6%9c%8d%e5%8a%a1%e5%ae%89%e8%a3%85%e5%8f%8a%e5%91%bd%e4%bb%a4%e4%bd%bf%e7%94%a8&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fyikwing.github.io%2f2018%2f03%2f002%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2fyikwing.github.io%2f2018%2f03%2f002%2f&amp;title=MySql%e6%9c%8d%e5%8a%a1%e5%ae%89%e8%a3%85%e5%8f%8a%e5%91%bd%e4%bb%a4%e4%bd%bf%e7%94%a8" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/hexo/"><i class="fas fa-tag fa-fw"></i>hexo</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/sql/"><i class="fas fa-tag fa-fw"></i>sql</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/mysql/"><i class="fas fa-tag fa-fw"></i>mysql</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://yikwing.github.io/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        
+            <a href="https://yikwing.github.io/2018/03/001/" class="next" rel="next" title="Mysql学习笔记">Mysql学习笔记<i class="fas fa-angle-right fa-fw"></i></a>
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a>&nbsp;|&nbsp;Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://yikwing.github.io/">yikwing</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

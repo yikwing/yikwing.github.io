@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>ubuntu从零开始搭建爬虫框架 | LoveIt Theme</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="LoveIt Theme Demo">
+<link rel="prev" href="https://yikwing.github.io/2018/03/004/" />
+<link rel="next" href="https://yikwing.github.io/2019/01/003/" />
+<link rel="canonical" href="https://yikwing.github.io/2018/03/005/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ubuntu从零开始搭建爬虫框架"/>
+<meta name="twitter:description" content="更换 ubuntu apt 源  查看 ubuntu 开发代号  1  sudo lsb_release -a   1 2 3 4 5 6 7 8 9 10 11 12 13  ## linux路径 sudo vim /etc/apt/sources.list deb http://mirrors.aliyun.com/ubuntu/ artful main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ artful-security main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ artful-updates main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ artful-proposed main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ artful-backports main restricted universe multiverse deb-src http://mirrors."/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "ubuntu从零开始搭建爬虫框架",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/yikwing.github.io\/2018\/03\/005\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/yikwing.github.io\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "linux, scrapy, gerapy",
+    
+    "wordcount":  283 ,
+    "url": "https:\/\/yikwing.github.io\/2018\/03\/005\/",
+    
+        "datePublished": "2018-03-03T11:40:26\x2b00:00",
+    
+    
+        "dateModified": "2018-03-03T11:40:26\x2b00:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "XXXX",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/yikwing.github.io\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://yikwing.github.io/">LoveIt Theme</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://yikwing.github.io/">LoveIt Theme</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">ubuntu从零开始搭建爬虫框架</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://yikwing.github.io/" rel="author"><i class="fas fa-user-circle fa-fw"></i>yikwing&nbsp;</a>
+                
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2018-03-03>2018-03-03</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 283 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>2 min&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="-ubuntu-apt-"></a><h2>更换 ubuntu apt 源</h2>
+<ul>
+<li>查看 ubuntu 开发代号</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo lsb_release -a
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://s13.postimg.org/fq3z4univ/Jietu20180124-171333.jpg" alt="此处输入图片的描述"></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">## linux路径</span>
+sudo vim  /etc/apt/sources.list
+
+deb http://mirrors.aliyun.com/ubuntu/ artful main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ artful-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ artful-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ artful-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ artful-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ artful main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ artful-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ artful-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ artful-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ artful-backports main restricted universe multiverse
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>安装扩展插件</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get install python3-dev
+sudo apt-get install python3-pip
+sudo apt-get install virtualenv
+
+<span class="c1"># pip3 安装插件报错</span>
+<span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span>C
+
+virtualenv -p /usr/bin/python3 py3env
+<span class="nb">source</span> ./py3env/bin/activite
+
+pip3 install gerapy
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>安装 scrapyd</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">pip3 install scrapyd
+pip3 install scrapyd-client
+
+sudo vim /etc/scrapyd/scrapyd.conf
+
+eg:~~~~~~
+<span class="o">[</span>scrapyd<span class="o">]</span>
+<span class="nv">eggs_dir</span>    <span class="o">=</span> eggs
+<span class="nv">logs_dir</span>    <span class="o">=</span> logs
+<span class="nv">items_dir</span>   <span class="o">=</span>
+<span class="nv">jobs_to_keep</span> <span class="o">=</span> <span class="m">5</span>
+<span class="nv">dbs_dir</span>     <span class="o">=</span> dbs
+<span class="nv">max_proc</span>    <span class="o">=</span> <span class="m">0</span>
+<span class="nv">max_proc_per_cpu</span> <span class="o">=</span> <span class="m">4</span>
+<span class="nv">finished_to_keep</span> <span class="o">=</span> <span class="m">100</span>
+<span class="nv">poll_interval</span> <span class="o">=</span> 5.0
+<span class="nv">bind_address</span> <span class="o">=</span> 127.0.0.1
+<span class="nv">http_port</span>   <span class="o">=</span> <span class="m">6800</span>
+<span class="nv">debug</span>       <span class="o">=</span> off
+<span class="nv">runner</span>      <span class="o">=</span> scrapyd.runner
+<span class="nv">application</span> <span class="o">=</span> scrapyd.app.application
+<span class="nv">launcher</span>    <span class="o">=</span> scrapyd.launcher.Launcher
+<span class="nv">webroot</span>     <span class="o">=</span> scrapyd.website.Root
+
+<span class="o">[</span>services<span class="o">]</span>
+schedule.json     <span class="o">=</span> scrapyd.webservice.Schedule
+cancel.json       <span class="o">=</span> scrapyd.webservice.Cancel
+addversion.json   <span class="o">=</span> scrapyd.webservice.AddVersion
+listprojects.json <span class="o">=</span> scrapyd.webservice.ListProjects
+listversions.json <span class="o">=</span> scrapyd.webservice.ListVersions
+listspiders.json  <span class="o">=</span> scrapyd.webservice.ListSpiders
+delproject.json   <span class="o">=</span> scrapyd.webservice.DeleteProject
+delversion.json   <span class="o">=</span> scrapyd.webservice.DeleteVersion
+listjobs.json     <span class="o">=</span> scrapyd.webservice.ListJobs
+daemonstatus.json <span class="o">=</span> scrapyd.webservice.DaemonStatus
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>启动 gerapy</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">gerapy init
+
+<span class="nb">cd</span> gerapy
+gerapy migrate
+
+gerapy runserver
+gerapy runserver 0.0.0.0:8888
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>This article is updated with 2018-03-03</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://yikwing.github.io/2018/03/005/index.md" target="_blank"></a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2fyikwing.github.io%2f2018%2f03%2f005%2f&amp;text=ubuntu%e4%bb%8e%e9%9b%b6%e5%bc%80%e5%a7%8b%e6%90%ad%e5%bb%ba%e7%88%ac%e8%99%ab%e6%a1%86%e6%9e%b6&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fyikwing.github.io%2f2018%2f03%2f005%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2fyikwing.github.io%2f2018%2f03%2f005%2f&amp;title=ubuntu%e4%bb%8e%e9%9b%b6%e5%bc%80%e5%a7%8b%e6%90%ad%e5%bb%ba%e7%88%ac%e8%99%ab%e6%a1%86%e6%9e%b6" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/linux/"><i class="fas fa-tag fa-fw"></i>linux</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/scrapy/"><i class="fas fa-tag fa-fw"></i>scrapy</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/gerapy/"><i class="fas fa-tag fa-fw"></i>gerapy</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://yikwing.github.io/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://yikwing.github.io/2018/03/004/" class="prev" rel="prev" title="scrapy语法"><i class="fas fa-angle-left fa-fw"></i>scrapy语法</a>
+        
+        
+            <a href="https://yikwing.github.io/2019/01/003/" class="next" rel="next" title="使用Aria2&#43;Aria2Ng&#43;OneIndex&#43;OneDrive建立不限流量/离线BT下载/在线观看网盘">使用Aria2&#43;Aria2Ng&#43;OneIndex&#43;OneDrive建立不限流量/离线BT下载/在线观看网盘<i class="fas fa-angle-right fa-fw"></i></a>
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a>&nbsp;|&nbsp;Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://yikwing.github.io/">yikwing</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

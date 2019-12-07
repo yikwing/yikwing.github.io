@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>css on LoveIt Theme</title>
+    <link>https://yikwing.github.io/tags/css/</link>
+    <description>Recent content in css on LoveIt Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 03 Mar 2018 11:37:26 +0000</lastBuildDate>
+    
+	<atom:link href="https://yikwing.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>scrapy语法</title>
+      <link>https://yikwing.github.io/2018/03/004/</link>
+      <pubDate>Sat, 03 Mar 2018 11:37:26 +0000</pubDate>
+      
+      <guid>https://yikwing.github.io/2018/03/004/</guid>
+      <description>xpath 语法    表达式 说明     article 选取所有 article 元素的所有子节点   /article 选取根元素 article   article/a 选取所有属于 article 的子元素的 a 元素   //div 选取所有 div 子元素   article//div 选取所有属于 article 元素的后代 div 元素   //@class 选取所有名为 class 的属性    xpath 语法-谓语    表达式 说明     /article/div[1] 选取属于 article 子元素的第一个 div 元素   /article/div[last()] 选取属于 article 子元素的最后一个 div 元素   /article/div[last()] 选取属于 article 子元素的倒数第二个 div 元素   //div[@lang] 选取所有拥有 lang 属性的 div 元素   //div[@lang=&#39;eng&amp;rsquo;] 选取所有 lang 属性为 eng 的 div 元素    xpath 语法-其他    表达式 说明     /div/* 选取属于 div 元素的所有子节点   //* 选取所有元素   //div[@*] 选取所有带属性的 div 元素   //div/a | //div/p 选取所有 div 元素的 a 和 p 元素   //span | //ul 选取文档中的 span 和 ul 元素    css 选择器    表达式 说明     * 选择所有节点   #contriner 选择 id 为 contriner 的节点   .</description>
+    </item>
+    
+  </channel>
+</rss>

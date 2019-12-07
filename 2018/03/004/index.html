@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>scrapy语法 | LoveIt Theme</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="LoveIt Theme Demo">
+<link rel="prev" href="https://yikwing.github.io/2018/03/001/" />
+<link rel="next" href="https://yikwing.github.io/2018/03/005/" />
+<link rel="canonical" href="https://yikwing.github.io/2018/03/004/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="scrapy语法"/>
+<meta name="twitter:description" content="xpath 语法    表达式 说明     article 选取所有 article 元素的所有子节点   /article 选取根元素 article   article/a 选取所有属于 article 的子元素的 a 元素   //div 选取所有 div 子元素   article//div 选取所有属于 article 元素的后代 div 元素   //@class 选取所有名为 class 的属性    xpath 语法-谓语    表达式 说明     /article/div[1] 选取属于 article 子元素的第一个 div 元素   /article/div[last()] 选取属于 article 子元素的最后一个 div 元素   /article/div[last()] 选取属于 article 子元素的倒数第二个 div 元素   //div[@lang] 选取所有拥有 lang 属性的 div 元素   //div[@lang=&#39;eng&rsquo;] 选取所有 lang 属性为 eng 的 div 元素    xpath 语法-其他    表达式 说明     /div/* 选取属于 div 元素的所有子节点   //* 选取所有元素   //div[@*] 选取所有带属性的 div 元素   //div/a | //div/p 选取所有 div 元素的 a 和 p 元素   //span | //ul 选取文档中的 span 和 ul 元素    css 选择器    表达式 说明     * 选择所有节点   #contriner 选择 id 为 contriner 的节点   ."/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "scrapy语法",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/yikwing.github.io\/2018\/03\/004\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/yikwing.github.io\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "scrapy, xpath, css",
+    
+    "wordcount":  212 ,
+    "url": "https:\/\/yikwing.github.io\/2018\/03\/004\/",
+    
+        "datePublished": "2018-03-03T11:37:26\x2b00:00",
+    
+    
+        "dateModified": "2018-03-03T11:37:26\x2b00:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "XXXX",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/yikwing.github.io\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://yikwing.github.io/">LoveIt Theme</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://yikwing.github.io/">LoveIt Theme</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">scrapy语法</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://yikwing.github.io/" rel="author"><i class="fas fa-user-circle fa-fw"></i>yikwing&nbsp;</a>
+                
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2018-03-03>2018-03-03</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 212 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>1 min&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="xpath-"></a><h2>xpath 语法</h2>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>article</td>
+<td>选取所有 article 元素的所有子节点</td>
+</tr>
+<tr>
+<td>/article</td>
+<td>选取根元素 article</td>
+</tr>
+<tr>
+<td>article/a</td>
+<td>选取所有属于 article 的子元素的 a 元素</td>
+</tr>
+<tr>
+<td>//div</td>
+<td>选取所有 div 子元素</td>
+</tr>
+<tr>
+<td>article//div</td>
+<td>选取所有属于 article 元素的后代 div 元素</td>
+</tr>
+<tr>
+<td>//@class</td>
+<td>选取所有名为 class 的属性</td>
+</tr>
+</tbody>
+</table>
+<a class="post-dummy-target" id="xpath-1"></a><h2>xpath 语法-谓语</h2>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/article/div[1]</td>
+<td>选取属于 article 子元素的第一个 div 元素</td>
+</tr>
+<tr>
+<td>/article/div[last()]</td>
+<td>选取属于 article 子元素的最后一个 div 元素</td>
+</tr>
+<tr>
+<td>/article/div[last()]</td>
+<td>选取属于 article 子元素的倒数第二个 div 元素</td>
+</tr>
+<tr>
+<td>//div[@lang]</td>
+<td>选取所有拥有 lang 属性的 div 元素</td>
+</tr>
+<tr>
+<td>//div[@lang='eng&rsquo;]</td>
+<td>选取所有 lang 属性为 eng 的 div 元素</td>
+</tr>
+</tbody>
+</table>
+<a class="post-dummy-target" id="xpath-2"></a><h2>xpath 语法-其他</h2>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/div/*</td>
+<td>选取属于 div 元素的所有子节点</td>
+</tr>
+<tr>
+<td>//*</td>
+<td>选取所有元素</td>
+</tr>
+<tr>
+<td>//div[@*]</td>
+<td>选取所有带属性的 div 元素</td>
+</tr>
+<tr>
+<td>//div/a | //div/p</td>
+<td>选取所有 div 元素的 a 和 p 元素</td>
+</tr>
+<tr>
+<td>//span | //ul</td>
+<td>选取文档中的 span 和 ul 元素</td>
+</tr>
+</tbody>
+</table>
+<a class="post-dummy-target" id="css-"></a><h2>css 选择器</h2>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>选择所有节点</td>
+</tr>
+<tr>
+<td>#contriner</td>
+<td>选择 id 为 contriner 的节点</td>
+</tr>
+<tr>
+<td>.container</td>
+<td>选取所有 class 包含 container 的节点</td>
+</tr>
+<tr>
+<td>li a</td>
+<td>选取所有 li 下的所有 a 节点</td>
+</tr>
+<tr>
+<td>ul + p</td>
+<td>选择 ul 后面的第一个 p 元素</td>
+</tr>
+<tr>
+<td>div#container &gt; ul</td>
+<td>选取 id 为 container 的 div 的第一个 ul 子元素</td>
+</tr>
+</tbody>
+</table>
+<a class="post-dummy-target" id="css-1"></a><h2>css 选择器进阶</h2>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ul ~ p</td>
+<td>选取与 ul 相邻的所有 p 元素</td>
+</tr>
+<tr>
+<td>a[title]</td>
+<td>选取所有有 title 属性的 a 元素</td>
+</tr>
+<tr>
+<td>a[href=&quot;xxx&rdquo;]</td>
+<td>选取所有 href 属性为 xxx 值的 a 元素</td>
+</tr>
+<tr>
+<td>a[href*=&quot;xxx&rdquo;]</td>
+<td>选取所有 href 属性包含 xxx 的 a 元素</td>
+</tr>
+<tr>
+<td>a[href^=&quot;xxx&rdquo;]</td>
+<td>选择所有 href 属性以 xxx 开头的 a 元素</td>
+</tr>
+<tr>
+<td>a[href$=&rdquo;.jpg&rdquo;]</td>
+<td>选取所有 href 属性以.jpg 结尾的 a 元素</td>
+</tr>
+<tr>
+<td>input[type=radio]:checked</td>
+<td>选择选中的 radio 的元素</td>
+</tr>
+<tr>
+<td>div:not(#container)</td>
+<td>选取所有 id 非 container 的 div 属性</td>
+</tr>
+<tr>
+<td>li:nth-child(3)</td>
+<td>选取第三个 li 元素</td>
+</tr>
+<tr>
+<td>tr:nth-child(2n)</td>
+<td>第偶数个 tr</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>This article is updated with 2018-03-03</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://yikwing.github.io/2018/03/004/index.md" target="_blank"></a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2fyikwing.github.io%2f2018%2f03%2f004%2f&amp;text=scrapy%e8%af%ad%e6%b3%95&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fyikwing.github.io%2f2018%2f03%2f004%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2fyikwing.github.io%2f2018%2f03%2f004%2f&amp;title=scrapy%e8%af%ad%e6%b3%95" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/scrapy/"><i class="fas fa-tag fa-fw"></i>scrapy</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/xpath/"><i class="fas fa-tag fa-fw"></i>xpath</a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/css/"><i class="fas fa-tag fa-fw"></i>css</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://yikwing.github.io/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://yikwing.github.io/2018/03/001/" class="prev" rel="prev" title="Mysql学习笔记"><i class="fas fa-angle-left fa-fw"></i>Mysql学习笔记</a>
+        
+        
+            <a href="https://yikwing.github.io/2018/03/005/" class="next" rel="next" title="ubuntu从零开始搭建爬虫框架">ubuntu从零开始搭建爬虫框架<i class="fas fa-angle-right fa-fw"></i></a>
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a>&nbsp;|&nbsp;Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://yikwing.github.io/">yikwing</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

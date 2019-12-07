@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gerapy on LoveIt Theme</title>
+    <link>https://yikwing.github.io/tags/gerapy/</link>
+    <description>Recent content in gerapy on LoveIt Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 03 Mar 2018 11:40:26 +0000</lastBuildDate>
+    
+	<atom:link href="https://yikwing.github.io/tags/gerapy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ubuntu从零开始搭建爬虫框架</title>
+      <link>https://yikwing.github.io/2018/03/005/</link>
+      <pubDate>Sat, 03 Mar 2018 11:40:26 +0000</pubDate>
+      
+      <guid>https://yikwing.github.io/2018/03/005/</guid>
+      <description>更换 ubuntu apt 源  查看 ubuntu 开发代号  1  sudo lsb_release -a   1 2 3 4 5 6 7 8 9 10 11 12 13  ## linux路径 sudo vim /etc/apt/sources.list deb http://mirrors.aliyun.com/ubuntu/ artful main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ artful-security main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ artful-updates main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ artful-proposed main restricted universe multiverse deb http://mirrors.aliyun.com/ubuntu/ artful-backports main restricted universe multiverse deb-src http://mirrors.</description>
+    </item>
+    
+  </channel>
+</rss>

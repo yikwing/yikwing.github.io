@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>flutter Json快速实现序列化 | LoveIt Theme</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="LoveIt Theme Demo">
+<link rel="prev" href="https://yikwing.github.io/2019/02/007/" />
+<link rel="next" href="https://yikwing.github.io/2019/12/009/" />
+<link rel="canonical" href="https://yikwing.github.io/2019/03/008/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="flutter Json快速实现序列化"/>
+<meta name="twitter:description" content="flutter Json快速实现序列化"/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "flutter Json快速实现序列化",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/yikwing.github.io\/2019\/03\/008\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/yikwing.github.io\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "flutter",
+    
+    "wordcount":  157 ,
+    "url": "https:\/\/yikwing.github.io\/2019\/03\/008\/",
+    
+        "datePublished": "2019-03-11T13:43:46\x2b08:00",
+    
+    
+        "dateModified": "2019-03-11T13:43:46\x2b08:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "XXXX",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/yikwing.github.io\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://yikwing.github.io/">LoveIt Theme</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://yikwing.github.io/">LoveIt Theme</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">flutter Json快速实现序列化</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://yikwing.github.io/" rel="author"><i class="fas fa-user-circle fa-fw"></i>yikwing&nbsp;</a>
+                <span class="post-category">
+                        included in
+                        
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-03-11>2019-03-11</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 157 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>1 min&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <p>flutter Json快速实现序列化</p>
+<a class="post-dummy-target" id="json-"></a><h2>Json 序列化</h2>
+<a class="post-dummy-target" id="1-json-"></a><h3>1. json 数据</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="err">#</span><span class="err">M</span><span class="err">o</span><span class="err">c</span><span class="err">k</span><span class="err">数</span><span class="err">据</span>
+<span class="p">{</span>
+  <span class="nt">&#34;item_type&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;view_count&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nt">&#34;source_name&#34;</span><span class="p">:</span> <span class="s2">&#34;追球体育&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;title&#34;</span><span class="p">:</span> <span class="s2">&#34;创造历史！曼联成欧冠首支主场落后2球后晋级的球队&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;comment_count&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&#34;is_top&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;cover_img_url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://static.arkcloudtech.com/FlEDUCKjeo4KdR_knI-a1yneaEGo.webp?imageMogr2/format/jpg&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;create_time&#34;</span><span class="p">:</span> <span class="mi">1551925692</span><span class="p">,</span>
+    <span class="nt">&#34;news_type&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="mi">58754</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="2--map-"></a><h3>2. 生成 Map 列表</h3>
+<p>进入https://caijinglong.github.io/json2dart/index_ch.html 快速生成 Map 原型
+<img src="https://i.loli.net/2019/03/11/5c85f70facfea.jpg" alt=""></p>
+<a class="post-dummy-target" id="3--json-3--jsonannotation-buildrunner-jsonserializable"></a><h3>3. 添加 json 解析依赖(3 个 <code>json_annotation` </code>build_runner<code> </code>json_serializable`)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">dependencies<span class="p">:</span><span class="w">
+</span><span class="w">  </span>flutter<span class="p">:</span><span class="w">
+</span><span class="w">    </span>sdk<span class="p">:</span><span class="w"> </span>flutter<span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="c">#上面默认不要动</span><span class="w">
+</span><span class="w">  </span>json_annotation<span class="p">:</span><span class="w"> </span>^<span class="m">2.0</span><span class="m">.0</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span>dev_dependencies<span class="p">:</span><span class="w">
+</span><span class="w">  </span>flutter_test<span class="p">:</span><span class="w">
+</span><span class="w">    </span>sdk<span class="p">:</span><span class="w"> </span>flutter<span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="c">#上面默认不要动</span><span class="w">
+</span><span class="w">  </span>build_runner<span class="p">:</span><span class="w"> </span>^<span class="m">1.2</span><span class="m">.8</span><span class="w">
+</span><span class="w">  </span>json_serializable<span class="p">:</span><span class="w"> </span>^<span class="m">2.0</span><span class="m">.2</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="4--2-flutterlib"></a><h3>4. 将步骤 2 生成的文件复制到<code>flutter/lib</code>目录,注意文件名</h3>
+<p>执行脚本,将会在当前目录生成<code>*.g.dart</code>文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">flutter packages pub run build_runner build
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://i.loli.net/2019/03/11/5c85f88b7fca6.jpg" alt="Jietu20190311-135525.jpg"></p>
+<a class="post-dummy-target" id="5-"></a><h3>5 导包开始解析</h3>
+<p>反序列化 fromJson</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart">
+  <span class="kd">var</span> <span class="n">date</span> <span class="o">=</span> <span class="err">`</span><span class="err">`</span><span class="err">`</span>
+  <span class="p">{</span>
+    <span class="s2">&#34;</span><span class="s2">item_type</span><span class="s2">&#34;</span><span class="o">:</span> <span class="m">1</span><span class="p">,</span>
+    <span class="s2">&#34;</span><span class="s2">data</span><span class="s2">&#34;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&#34;</span><span class="s2">view_count</span><span class="s2">&#34;</span><span class="o">:</span> <span class="m">3</span><span class="p">,</span>
+      <span class="s2">&#34;</span><span class="s2">source_name</span><span class="s2">&#34;</span><span class="o">:</span> <span class="s2">&#34;</span><span class="s2">追球体育</span><span class="s2">&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;</span><span class="s2">title</span><span class="s2">&#34;</span><span class="o">:</span> <span class="s2">&#34;</span><span class="s2">创造历史！曼联成欧冠首支主场落后2球后晋级的球队</span><span class="s2">&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;</span><span class="s2">comment_count</span><span class="s2">&#34;</span><span class="o">:</span> <span class="m">2</span><span class="p">,</span>
+      <span class="s2">&#34;</span><span class="s2">is_top</span><span class="s2">&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&#34;</span><span class="s2">cover_img_url</span><span class="s2">&#34;</span><span class="o">:</span> <span class="s2">&#34;</span><span class="s2">https://static.arkcloudtech.com/FlEDUCKjeo4KdR_knI-a1yneaEGo.webp?imageMogr2/format/jpg</span><span class="s2">&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;</span><span class="s2">create_time</span><span class="s2">&#34;</span><span class="o">:</span> <span class="m">1551925692</span><span class="p">,</span>
+      <span class="s2">&#34;</span><span class="s2">news_type</span><span class="s2">&#34;</span><span class="o">:</span> <span class="m">1</span><span class="p">,</span>
+      <span class="s2">&#34;</span><span class="s2">id</span><span class="s2">&#34;</span><span class="o">:</span> <span class="m">58754</span>
+    <span class="p">}</span>
+  <span class="p">}</span><span class="err">`</span><span class="err">`</span><span class="err">`</span>
+
+<span class="kd">var</span> <span class="n">bean</span> <span class="o">=</span> <span class="n">items</span><span class="p">.</span><span class="n">fromJson</span><span class="p">(</span><span class="n">json</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="p">)</span><span class="p">;</span>
+<span class="n">id</span> <span class="o">=</span> <span class="n">bean</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>序列化 ToJson</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-dart" data-lang="dart">  <span class="kt">String</span> <span class="n">json</span> <span class="o">=</span> <span class="n">JSON</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">bean</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>This article is updated with 2019-03-11</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://yikwing.github.io/2019/03/008/index.md" target="_blank"></a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2fyikwing.github.io%2f2019%2f03%2f008%2f&amp;text=flutter%20Json%e5%bf%ab%e9%80%9f%e5%ae%9e%e7%8e%b0%e5%ba%8f%e5%88%97%e5%8c%96&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fyikwing.github.io%2f2019%2f03%2f008%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2fyikwing.github.io%2f2019%2f03%2f008%2f&amp;title=flutter%20Json%e5%bf%ab%e9%80%9f%e5%ae%9e%e7%8e%b0%e5%ba%8f%e5%88%97%e5%8c%96" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/flutter/"><i class="fas fa-tag fa-fw"></i>flutter</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://yikwing.github.io/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://yikwing.github.io/2019/02/007/" class="prev" rel="prev" title="Android中的Service"><i class="fas fa-angle-left fa-fw"></i>Android中的Service</a>
+        
+        
+            <a href="https://yikwing.github.io/2019/12/009/" class="next" rel="next" title="Go 优雅的单元测试">Go 优雅的单元测试<i class="fas fa-angle-right fa-fw"></i></a>
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a>&nbsp;|&nbsp;Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://yikwing.github.io/">yikwing</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

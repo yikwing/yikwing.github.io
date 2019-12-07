@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hexo on LoveIt Theme</title>
+    <link>https://yikwing.github.io/tags/hexo/</link>
+    <description>Recent content in hexo on LoveIt Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 03 Mar 2018 11:19:11 +0000</lastBuildDate>
+    
+	<atom:link href="https://yikwing.github.io/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MySql服务安装及命令使用</title>
+      <link>https://yikwing.github.io/2018/03/002/</link>
+      <pubDate>Sat, 03 Mar 2018 11:19:11 +0000</pubDate>
+      
+      <guid>https://yikwing.github.io/2018/03/002/</guid>
+      <description>安装 MySql 服务  mac  1  brew install mysql    linux  1 2  sudo apt-get insatll mysql-server sudo apt-get install mysql-client    修改密码 1 2 3 4 5 6 7 8  sudo mysqld_safe --skin-grant-tables --skip-networking &amp;amp;  &amp;gt; use mysql &amp;gt; update user set authentication_string=password(&amp;#39;新密码&amp;#39;), plugin=&amp;#39;mysql_native_password&amp;#39; where user = &amp;#39;root&amp;#39; &amp;gt; flush privileges &amp;gt; quit    mysql 设置远程访问  sudo vim /etc/mysql/mysql.</description>
+    </item>
+    
+  </channel>
+</rss>

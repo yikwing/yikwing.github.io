@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Mysql学习笔记 | LoveIt Theme</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noodp" />
+<meta name="Description" content="LoveIt Theme Demo">
+<link rel="prev" href="https://yikwing.github.io/2018/03/002/" />
+<link rel="next" href="https://yikwing.github.io/2018/03/004/" />
+<link rel="canonical" href="https://yikwing.github.io/2018/03/001/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mysql学习笔记"/>
+<meta name="twitter:description" content="安装 MySql 服务  mac  1  brew install mysql    linux  1 2 3 4  sudo apt-get insatll mysql-server sudo apt-get install mysql-client chsh -s `which zsh`    修改密码 1 2 3 4 5 6 7 8  sudo mysqld_safe --skin-grant-tables --skip-networking &amp;  &gt; use mysql &gt; update user set authentication_string=password(&#39;新密码&#39;), plugin=&#39;mysql_native_password&#39; where user = &#39;root&#39; &gt; flush privileges &gt; quit    启动 MySql 服务  mac  1 2 3 4 5 6 7 8  # 启动mysql服务 mysql."/>
+<script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Mysql学习笔记",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/yikwing.github.io\/2018\/03\/001\/"
+    },
+    
+        "image": {
+            "@type": "ImageObject",
+            "url": "https:\/\/yikwing.github.io\/cover.png",
+            "width":  800 ,
+            "height":  600 
+        },
+    
+    "genre": "posts",
+    
+        "keywords": "mysql",
+    
+    "wordcount":  580 ,
+    "url": "https:\/\/yikwing.github.io\/2018\/03\/001\/",
+    
+        "datePublished": "2018-03-03T11:23:16\x2b00:00",
+    
+    
+        "dateModified": "2018-03-03T11:23:16\x2b00:00",
+    
+    
+        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
+    
+    
+        "publisher": {
+            "@type": "Organization",
+            "name": "XXXX",
+            "logo": {
+            "@type": "ImageObject",
+            "url": "https:\/\/yikwing.github.io\/logo.png",
+            "width":  127 ,
+            "height":  40 
+            }
+        },
+    
+    
+    "description": ""
+    }
+    </script>
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
+
+<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
+
+    </head>
+    <body>
+        <script>
+            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            window.isDark && document.body.classList.add('dark-theme');
+        </script>
+        <div class="wrapper">
+            <nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-header animated bounceIn">
+            <a href="https://yikwing.github.io/">LoveIt Theme</a>
+        </div>
+        <div class="navbar-menu">
+            
+            
+                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile">
+     <div class="navbar-container">
+        <div class="navbar-header">
+            <div class="navbar-header-title animated bounceIn">
+                <a href="https://yikwing.github.io/">LoveIt Theme</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="navbar-menu" id="mobile-menu">
+            
+            
+                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
+            
+                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
+            
+            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
+        </div>
+    </div>
+</nav><main class="main">
+                <div class="container">
+                    
+    
+    
+    
+
+    <article class="post-warp">
+        <h1 class="post-title animated flipInX">Mysql学习笔记</h1>
+
+        <div class="post-meta">
+            <div class="post-meta-main">
+                <a class="author" href="https://yikwing.github.io/" rel="author"><i class="fas fa-user-circle fa-fw"></i>yikwing&nbsp;</a>
+                <span class="post-category">
+                        included in
+                        <i class="far fa-folder fa-fw"></i><a href="https://yikwing.github.io/categories/%E5%85%B3%E4%BA%8E%E7%B3%BB%E7%BB%9F/">关于系统</a>
+                            
+                    </span>
+            </div>
+            <div class="post-meta-other">
+                <i class="far fa-calendar-alt fa-fw"></i><time datetime=2018-03-03>2018-03-03</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 580 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>3 min&nbsp;</div>
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="post-dummy-target" id="-mysql-"></a><h2>安装 MySql 服务</h2>
+<ul>
+<li>mac</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">brew install mysql
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>linux</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo apt-get insatll mysql-server
+sudo apt-get install mysql-client
+
+chsh -s <span class="sb">`</span>which zsh<span class="sb">`</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<a class="post-dummy-target" id="heading"></a><h2>修改密码</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql">
+<span class="n">sudo</span> <span class="n">mysqld_safe</span> <span class="c1">--skin-grant-tables --skip-networking &amp;
+</span><span class="c1"></span>
+<span class="o">&gt;</span> <span class="n">use</span> <span class="n">mysql</span>
+<span class="o">&gt;</span> <span class="k">update</span> <span class="k">user</span> <span class="k">set</span> <span class="n">authentication_string</span><span class="o">=</span><span class="n">password</span><span class="p">(</span><span class="s1">&#39;</span><span class="s1">新密码</span><span class="s1">&#39;</span><span class="p">)</span><span class="p">,</span>
+<span class="n">plugin</span><span class="o">=</span><span class="s1">&#39;</span><span class="s1">mysql_native_password</span><span class="s1">&#39;</span> <span class="k">where</span> <span class="k">user</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="s1">root</span><span class="s1">&#39;</span>
+<span class="o">&gt;</span> <span class="n">flush</span> <span class="k">privileges</span>
+<span class="o">&gt;</span> <span class="n">quit</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<a class="post-dummy-target" id="-mysql-1"></a><h2>启动 MySql 服务</h2>
+<ul>
+<li>mac</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 启动mysql服务</span>
+mysql.server start
+
+<span class="c1"># 关闭mysql服务</span>
+mysql.server stop
+
+<span class="c1">#连接mysql数据库</span>
+sudo mysql -h host<span class="o">(</span>主机地址<span class="o">)</span> -u user<span class="o">(</span>用户名<span class="o">)</span>  -p
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>linux</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 启动mysql服务</span>
+sudo service mysql start
+
+<span class="c1"># 关闭mysql服务</span>
+sudo service mysql start
+
+<span class="c1">#连接mysql数据库</span>
+sudo mysql -u root<span class="o">(</span>用户名<span class="o">)</span> -p password<span class="o">(</span>密码<span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<a class="post-dummy-target" id="sql-"></a><h2>SQL 命令</h2>
+<ul>
+<li>查看数据库</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SHOW</span> <span class="n">DATABASES</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-01-04.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>删除数据库</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DROP</span> <span class="k">DATABASE</span> <span class="o">&lt;</span><span class="err">数</span><span class="err">据</span><span class="err">库</span><span class="err">名</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>使用数据库</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">use</span> <span class="o">&lt;</span><span class="err">数</span><span class="err">据</span><span class="err">库</span><span class="err">名</span><span class="err">字</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-01-05.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>查看表</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">show</span> <span class="n">tables</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-01-06.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>删除表</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DROP</span> <span class="k">TABLE</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>退出 mysql</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">quit</span> <span class="err">或</span> <span class="n">exit</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>新建数据库</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="o">&lt;</span><span class="err">数</span><span class="err">据</span><span class="err">库</span><span class="err">名</span><span class="err">字</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-02-01.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>新建表</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">&lt;</span><span class="err">表</span><span class="err">的</span><span class="err">名</span><span class="err">字</span><span class="o">&gt;</span><span class="p">(</span>
+    <span class="err">列</span><span class="err">名</span><span class="n">a</span> <span class="err">数</span><span class="err">据</span><span class="err">类</span><span class="err">型</span><span class="p">(</span><span class="err">数</span><span class="err">据</span><span class="err">长</span><span class="err">度</span><span class="p">)</span><span class="p">,</span>
+    <span class="err">列</span><span class="err">名</span><span class="n">b</span> <span class="err">数</span><span class="err">据</span><span class="err">类</span><span class="err">型</span><span class="p">(</span><span class="err">数</span><span class="err">据</span><span class="err">长</span><span class="err">度</span><span class="p">)</span><span class="err">，</span>
+    <span class="err">列</span><span class="err">名</span><span class="k">c</span> <span class="err">数</span><span class="err">据</span><span class="err">类</span><span class="err">型</span><span class="p">(</span><span class="err">数</span><span class="err">据</span><span class="err">长</span><span class="err">度</span><span class="p">)</span>
+<span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-02-04.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>插入表数据</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">&lt;</span><span class="err">表</span><span class="err">名</span><span class="o">&gt;</span><span class="p">(</span><span class="err">列</span><span class="err">名</span><span class="n">a</span><span class="p">,</span><span class="err">列</span><span class="err">名</span><span class="n">b</span><span class="p">,</span><span class="err">列</span><span class="err">名</span><span class="k">c</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="err">值</span><span class="n">a</span><span class="p">,</span><span class="err">值</span><span class="n">b</span><span class="p">,</span><span class="err">值</span><span class="k">c</span><span class="p">)</span><span class="p">;</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">&lt;</span><span class="err">表</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">VALUES</span><span class="p">(</span><span class="err">值</span><span class="n">a</span><span class="p">,</span><span class="err">值</span><span class="n">b</span><span class="p">,</span><span class="err">值</span><span class="k">c</span><span class="p">)</span><span class="p">;</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="o">&lt;</span><span class="err">表</span><span class="err">名</span><span class="o">&gt;</span><span class="p">(</span><span class="err">列</span><span class="err">名</span><span class="n">a</span><span class="p">,</span><span class="err">列</span><span class="err">名</span><span class="k">c</span><span class="p">)</span> <span class="k">VALUES</span><span class="p">(</span><span class="err">值</span><span class="n">a</span><span class="p">,</span><span class="err">值</span><span class="k">c</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<a class="post-dummy-target" id="sql-1"></a><h2>SQL 约束</h2>
+<table>
+<thead>
+<tr>
+<th>主键</th>
+<th>默认值</th>
+<th>唯一</th>
+<th>外键</th>
+<th>非空</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PRIMARY KEY</td>
+<td>DEFAULT</td>
+<td>UNIQUE</td>
+<td>FOREIGN KEY</td>
+<td>NOT NULL</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.shiyanlou.com/courses/running">&mdash;&mdash;&mdash;&mdash;&gt; SQL 约束</a></p>
+<ul>
+<li>导入外部 sql 文件</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">source</span> &lt;sql路径&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://s13.postimg.org/97e98ezgn/Jietu20180115-113737_2x.jpg" alt="此处输入图片的描述"></p>
+<hr>
+<a class="post-dummy-target" id="select-"></a><h2>SELECT 语句</h2>
+<ul>
+<li>基本查询语句</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">&lt;</span><span class="err">列</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="err">表</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">WHERE</span> <span class="err">限</span><span class="err">制</span><span class="err">条</span><span class="err">件</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>ADN 和 OR</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="err">表</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">WHERE</span> <span class="n">age</span><span class="o">&gt;</span><span class="mi">25</span> <span class="o">&lt;</span><span class="k">and</span><span class="o">|</span><span class="k">or</span><span class="o">&gt;</span> <span class="k">are</span> <span class="o">&lt;</span><span class="mi">30</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>IN 和 NOT IN</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="err">表</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">WHERE</span> <span class="o">&lt;</span><span class="err">列</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">IN</span> <span class="p">(</span><span class="s1">&#39;</span><span class="s1">Tom</span><span class="s1">&#39;</span><span class="p">,</span><span class="s1">&#39;</span><span class="s1">Jack</span><span class="s1">&#39;</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>通配符</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="err">其</span><span class="err">中</span> <span class="n">_</span> <span class="err">代</span><span class="err">表</span><span class="err">一</span><span class="err">个</span><span class="err">未</span><span class="err">指</span><span class="err">定</span><span class="err">字</span><span class="err">符</span><span class="err">，</span><span class="o">%</span> <span class="err">代</span><span class="err">表</span><span class="err">不</span><span class="err">定</span><span class="err">个</span><span class="err">未</span><span class="err">指</span><span class="err">定</span><span class="p">.</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="err">表</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">WHERE</span> <span class="o">&lt;</span><span class="err">列</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">LIKE</span> <span class="s1">&#39;</span><span class="s1">1101__</span><span class="s1">&#39;</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="err">表</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">WHERE</span> <span class="o">&lt;</span><span class="err">列</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">LIKE</span> <span class="s1">&#39;</span><span class="s1">J%</span><span class="s1">&#39;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>对结果排序</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="k">ASC</span> <span class="err">升</span><span class="err">序</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="err">表</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="o">&lt;</span><span class="err">列</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">ASC</span><span class="p">;</span>
+
+<span class="o">#</span> <span class="k">DESC</span> <span class="err">降</span><span class="err">序</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="err">表</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="o">&lt;</span><span class="err">列</span><span class="err">名</span><span class="o">&gt;</span> <span class="k">DESC</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>SQL 内置函数和计算</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>COUNT</th>
+<th>SUM</th>
+<th>AVG</th>
+<th>MAX</th>
+<th>MIN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>作用</td>
+<td>计数</td>
+<td>求和</td>
+<td>求平均值</td>
+<td>最大值</td>
+<td>最小值</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="o">#</span> <span class="n">AS关键词可以给值重命名</span>
+<span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="k">AS</span> <span class="n">max_salary</span><span class="p">,</span><span class="k">MIN</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="err">表</span><span class="err">名</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>子查询</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">proj_name</span><span class="p">)</span> <span class="k">AS</span> <span class="n">count_project</span> <span class="k">FROM</span> <span class="n">project</span>
+<span class="k">WHERE</span> <span class="n">of_dpt</span> <span class="k">IN</span>
+<span class="p">(</span><span class="k">SELECT</span> <span class="n">in_dpt</span> <span class="k">FROM</span> <span class="n">employee</span> <span class="k">WHERE</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;</span><span class="s1">Tom</span><span class="s1">&#39;</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-04-13.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>连接查询</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">people_num</span>
+<span class="k">FROM</span> <span class="n">employee</span><span class="p">,</span><span class="n">department</span>
+<span class="k">WHERE</span> <span class="n">employee</span><span class="p">.</span><span class="n">in_dpt</span> <span class="o">=</span> <span class="n">department</span><span class="p">.</span><span class="n">dpt_name</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">id</span><span class="p">;</span>
+
+<span class="c1">-----------------------------------------------------
+</span><span class="c1"></span>
+<span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">people_num</span>
+<span class="k">FROM</span> <span class="n">employee</span> <span class="k">JOIN</span> <span class="n">department</span>
+<span class="k">ON</span> <span class="n">employee</span><span class="p">.</span><span class="n">in_dpt</span> <span class="o">=</span> <span class="n">department</span><span class="p">.</span><span class="n">dpt_name</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">id</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-04-14.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>重命名表</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">RENAME</span> <span class="k">TABLE</span> <span class="err">原</span><span class="err">名</span> <span class="k">TO</span> <span class="err">新</span><span class="err">名</span><span class="err">字</span><span class="p">;</span>
+
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">原</span><span class="err">名</span> <span class="k">RENAME</span> <span class="err">新</span><span class="err">名</span><span class="p">;</span>
+
+<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">原</span><span class="err">名</span> <span class="k">RENAME</span> <span class="k">TO</span> <span class="err">新</span><span class="err">名</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-05-03.png/logoblackfont" alt="此处输入图片的描述"></p>
+<a class="post-dummy-target" id="heading1"></a><h2>数据库及表的修改和删除</h2>
+<ul>
+<li>增加一列</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="err">列</span><span class="err">名</span><span class="err">字</span> <span class="err">数</span><span class="err">据</span><span class="err">类</span><span class="err">型</span> <span class="err">约</span><span class="err">束</span><span class="p">;</span>
+<span class="err">或</span><span class="err">：</span> <span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span> <span class="k">ADD</span> <span class="err">列</span><span class="err">名</span><span class="err">字</span> <span class="err">数</span><span class="err">据</span><span class="err">类</span><span class="err">型</span> <span class="err">约</span><span class="err">束</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-05-05.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>指定添加位置</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span> <span class="k">ADD</span> <span class="err">列</span><span class="err">名</span><span class="err">字</span> <span class="err">数</span><span class="err">据</span><span class="err">类</span><span class="err">型</span> <span class="err">约</span><span class="err">束</span> <span class="k">AFTER</span> <span class="o">&lt;</span><span class="err">列</span><span class="err">名</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-05-06.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>放在首行</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span> <span class="k">ADD</span> <span class="err">列</span><span class="err">名</span><span class="err">字</span> <span class="err">数</span><span class="err">据</span><span class="err">类</span><span class="err">型</span> <span class="err">约</span><span class="err">束</span> <span class="k">FIRST</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-05-07.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>删除一列</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span> <span class="k">DROP</span> <span class="k">COLUMN</span> <span class="err">列</span><span class="err">名</span><span class="err">字</span><span class="p">;</span>
+<span class="err">或</span><span class="err">：</span> <span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span> <span class="k">DROP</span> <span class="err">列</span><span class="err">名</span><span class="err">字</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-05-08.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>重命名一列</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span> <span class="n">CHANGE</span> <span class="err">原</span><span class="err">列</span><span class="err">名</span> <span class="err">新</span><span class="err">列</span><span class="err">名</span> <span class="err">数</span><span class="err">据</span><span class="err">类</span><span class="err">型</span> <span class="err">约</span><span class="err">束</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-05-09.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>改变数据类型</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span> <span class="k">MODIFY</span> <span class="err">列</span><span class="err">名</span><span class="err">字</span> <span class="err">新</span><span class="err">数</span><span class="err">据</span><span class="err">类</span><span class="err">型</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<a class="post-dummy-target" id="heading2"></a><h2>修改表的内容</h2>
+<ul>
+<li>修改表中的某个值</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">UPDATE</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span> <span class="k">SET</span> <span class="err">列</span><span class="mi">1</span><span class="o">=</span><span class="err">值</span><span class="mi">1</span><span class="p">,</span><span class="err">列</span><span class="mi">2</span><span class="o">=</span><span class="err">值</span><span class="mi">2</span> <span class="k">WHERE</span> <span class="err">条</span><span class="err">件</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-05-10.png/logoblackfont" alt="此处输入图片的描述"></p>
+<ul>
+<li>删除某一行记录</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DELETE</span> <span class="k">FROM</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span> <span class="k">WHERE</span> <span class="err">条</span><span class="err">件</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-05-11.png/logoblackfont" alt="此处输入图片的描述"></p>
+<a class="post-dummy-target" id="heading3"></a><h2>索引</h2>
+<ul>
+<li>建立索引</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span> <span class="k">ADD</span> <span class="k">INDEX</span> <span class="err">索</span><span class="err">引</span><span class="err">名</span> <span class="p">(</span><span class="err">列</span><span class="err">名</span><span class="p">)</span><span class="p">;</span>
+<span class="k">CREATE</span> <span class="k">INDEX</span> <span class="err">索</span><span class="err">引</span><span class="err">名</span> <span class="k">ON</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span> <span class="p">(</span><span class="err">列</span><span class="err">名</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>查看索引</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">show</span> <span class="k">index</span> <span class="k">from</span> <span class="n">employee</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="heading4"></a><h2>视图</h2>
+<ul>
+<li>建立视图</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="err">视</span><span class="err">图</span><span class="err">名</span><span class="p">(</span><span class="err">列</span><span class="n">a</span><span class="p">,</span><span class="err">列</span><span class="n">b</span><span class="p">,</span><span class="err">列</span><span class="k">c</span><span class="p">)</span> <span class="k">AS</span> <span class="k">SELECT</span> <span class="err">列</span><span class="mi">1</span><span class="p">,</span><span class="err">列</span><span class="mi">2</span><span class="p">,</span><span class="err">列</span><span class="mi">3</span> <span class="k">FROM</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>查看视图</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="o">&lt;</span><span class="err">视</span><span class="err">图</span><span class="err">名</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-06-02.png/logoblackfont" alt="此处输入图片的描述"></p>
+<a class="post-dummy-target" id="heading5"></a><h2>导入</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">LOAD</span> <span class="k">DATA</span> <span class="n">INFILE</span> <span class="s1">&#39;</span><span class="s1">文件路径和文件名</span><span class="s1">&#39;</span> <span class="k">INTO</span> <span class="k">TABLE</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://dn-anything-about-doc.qbox.me/MySQL/sql-06-05.png/logoblackfont" alt="此处输入图片的描述"></p>
+<a class="post-dummy-target" id="heading6"></a><h2>导出</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="err">列</span><span class="mi">1</span><span class="err">，</span><span class="err">列</span><span class="mi">2</span> <span class="k">INTO</span> <span class="n">OUTFILE</span> <span class="s1">&#39;</span><span class="s1">文件路径和文件名</span><span class="s1">&#39;</span> <span class="k">FROM</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">INTO</span> <span class="n">OUTFILE</span> <span class="s1">&#39;</span><span class="s1">/tmp/out.txt</span><span class="s1">&#39;</span> <span class="k">FROM</span> <span class="n">employee</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="heading7"></a><h2>备份</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">mysqldump</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="err">数</span><span class="err">据</span><span class="err">库</span><span class="err">名</span><span class="o">&gt;</span><span class="err">备</span><span class="err">份</span><span class="err">文</span><span class="err">件</span><span class="err">名</span><span class="p">;</span>   <span class="o">#</span><span class="err">备</span><span class="err">份</span><span class="err">整</span><span class="err">个</span><span class="err">数</span><span class="err">据</span><span class="err">库</span>
+<span class="n">mysqldump</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="err">数</span><span class="err">据</span><span class="err">库</span><span class="err">名</span> <span class="err">表</span><span class="err">名</span><span class="err">字</span><span class="o">&gt;</span><span class="err">备</span><span class="err">份</span><span class="err">文</span><span class="err">件</span><span class="err">名</span><span class="p">;</span>  <span class="o">#</span><span class="err">备</span><span class="err">份</span><span class="err">整</span><span class="err">个</span><span class="err">表</span>
+</code></pre></td></tr></table>
+</div>
+</div><a class="post-dummy-target" id="heading8"></a><h2>恢复</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">source</span> <span class="o">&lt;</span><span class="n">SQL路径</span><span class="o">&gt;</span>
+
+<span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="err">新</span><span class="err">数</span><span class="err">据</span><span class="err">库</span><span class="err">名</span> <span class="o">&lt;</span> <span class="n">bak</span><span class="p">.</span><span class="k">sql</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>This article is updated with 2018-03-03</span>
+            </div>
+            <div class="post-info-license">
+                
+            </div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md">
+                
+                    
+                        <span><a class="link-to-markdown" href="https://yikwing.github.io/2018/03/001/index.md" target="_blank"></a></span>
+                    
+                
+            </div>
+            <div class="post-info-share">
+                
+                    <span>
+    
+        <a href="//twitter.com/share?url=https%3a%2f%2fyikwing.github.io%2f2018%2f03%2f001%2f&amp;text=Mysql%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0&amp;via=" target="_blank" title="Share on Twitter">
+            <i class="fab fa-twitter fa-fw"></i>
+        </a>
+    
+    
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fyikwing.github.io%2f2018%2f03%2f001%2f" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook-square fa-fw"></i>
+        </a>
+    
+    
+        <a href="//reddit.com/submit?url=https%3a%2f%2fyikwing.github.io%2f2018%2f03%2f001%2f&amp;title=Mysql%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0" target="_blank" title="Share on Reddit">
+            <i class="fab fa-reddit fa-fw"></i>
+        </a>
+    
+    
+    
+    
+    
+    
+    
+    
+</span>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section>
+            
+                
+                    <span class="tag">
+                        <a href="https://yikwing.github.io/tags/mysql/"><i class="fas fa-tag fa-fw"></i>mysql</a>
+                    </span>
+                
+            
+        </section>
+        <section>
+            <span><a href="javascript:window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="https://yikwing.github.io/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+            <a href="https://yikwing.github.io/2018/03/002/" class="prev" rel="prev" title="MySql服务安装及命令使用"><i class="fas fa-angle-left fa-fw"></i>MySql服务安装及命令使用</a>
+        
+        
+            <a href="https://yikwing.github.io/2018/03/004/" class="next" rel="next" title="scrapy语法">scrapy语法<i class="fas fa-angle-right fa-fw"></i></a>
+        
+    </div>
+</div>
+
+        <div class="post-comment">
+            
+            
+
+            
+        </div>
+    </article></div>
+            </main>
+            <footer class="footer">
+    <div class="copyright">
+        <div class="copyright-line">
+            Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a>&nbsp;|&nbsp;Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
+        </div>
+        <div class="copyright-line">
+            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://yikwing.github.io/">yikwing</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+
+    
+    
+
+
+
+    
+    
+
+
+
+
+
+    
+    
+
+
+<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
+<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
+<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+
+
+
+
+
+<script src="/js/blog.min.js"></script>
+
+
+    
+</div>
+        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
+    </body>
+</html>

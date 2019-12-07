@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>flutter on LoveIt Theme</title>
+    <link>https://yikwing.github.io/tags/flutter/</link>
+    <description>Recent content in flutter on LoveIt Theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 11 Mar 2019 13:43:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://yikwing.github.io/tags/flutter/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>flutter Json快速实现序列化</title>
+      <link>https://yikwing.github.io/2019/03/008/</link>
+      <pubDate>Mon, 11 Mar 2019 13:43:46 +0800</pubDate>
+      
+      <guid>https://yikwing.github.io/2019/03/008/</guid>
+      <description>&lt;p&gt;flutter Json快速实现序列化&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

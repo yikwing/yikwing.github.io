@@ -1,0 +1,94 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>LoveIt Theme on LoveIt Theme</title>
+        <link>https://yikwing.github.io/</link>
+        <description>Recent content in LoveIt Theme on LoveIt Theme</description>
+        <generator>Hugo -- gohugo.io</generator>
+        
+            <language>en</language>
+        
+        
+        
+            <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+        
+        
+            <lastBuildDate>Sat, 07 Dec 2019 11:39:15 +0800</lastBuildDate>
+        
+        <atom:link href="https://yikwing.github.io/" rel="self" type="application/rss+xml" />
+        
+            <item>
+                <title>Posts</title>
+                <link>https://yikwing.github.io/posts/</link>
+                <pubDate>Sat, 07 Dec 2019 11:39:15 +0800</pubDate>
+                
+                <guid>https://yikwing.github.io/posts/</guid>
+                <description></description>
+            </item>
+        
+            <item>
+                <title></title>
+                <link>https://yikwing.github.io/about/</link>
+                <pubDate>Sun, 17 Feb 2019 00:00:00 +0000</pubDate>
+                
+                <guid>https://yikwing.github.io/about/</guid>
+                <description>&lt;h1 id=&#34;heading&#34;&gt;联系方式&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;姓名：荣毅&lt;/li&gt;
+&lt;li&gt;手机：18664379256&lt;/li&gt;
+&lt;li&gt;Email：yikwing14@126.com&lt;/li&gt;
+&lt;li&gt;微信：yikwing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;heading1&#34;&gt;个人信息&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;技术博客：&lt;a href=&#34;http://yikwing.github.io/&#34;&gt;&lt;a href=&#34;http://yikwing.github.io/&#34;&gt;http://yikwing.github.io/&lt;/a&gt;&lt;/a&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;/li&gt;
+&lt;li&gt;Github：&lt;a href=&#34;https://github.com/yikwing&#34;&gt;&lt;a href=&#34;https://github.com/yikwing&#34;&gt;https://github.com/yikwing&lt;/a&gt; &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;期望职位：Android 开发&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;heading2&#34;&gt;项目经历&lt;/h1&gt;
+&lt;h2 id=&#34;-&#34;&gt;追求体育 项目&lt;/h2&gt;
+&lt;h3 id=&#34;heading3&#34;&gt;项目描述&lt;/h3&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;追球体育是一个利用 Weex 技术实现三端开发,大大提高开发时间.&lt;/p&gt;
+&lt;h3 id=&#34;heading4&#34;&gt;责任描述&lt;/h3&gt;
+&lt;p&gt;主要可以从下面三点来写：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在这个项目中你负责了什么、做了什么、担任了什么角色&lt;/li&gt;
+&lt;li&gt;从这个项目中你学会了那些东西，使用到了那些技术，学会了那些新技术的使用&lt;/li&gt;
+&lt;li&gt;另外项目描述中，最好可以体现自己的综合素质，比如你是如何协调项目组成员协同开发的或者在遇到某一个棘手的问题的时候你是如何解决的。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;heading5&#34;&gt;开源项目和技术文章&lt;/h1&gt;
+&lt;h2 id=&#34;heading6&#34;&gt;开源项目&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Snailclimb/Java-Guide&#34;&gt;Java-Guide&lt;/a&gt; ：一份涵盖大部分 Java 程序员所需要掌握的核心知识。Star:3.9K; Fork:0.9k。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;heading7&#34;&gt;技术文章推荐&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://juejin.im/post/5b7d69e4e51d4538ca5730cb&#34;&gt;可能是把 Java 内存区域讲的最清楚的一篇文章&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://juejin.im/post/5b85ea54e51d4538dd08f601&#34;&gt;搞定 JVM 垃圾回收就是这么简单&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://juejin.im/post/5b3b19856fb9a04fa42f8c71&#34;&gt;前端&amp;amp;后端程序员必备的 Linux 基础知识&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://juejin.im/post/5b260ec26fb9a00e8e4b031a&#34;&gt;可能是把 Docker 的概念讲的最清楚的一篇文章&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h1 id=&#34;heading8&#34;&gt;技能清单&lt;/h1&gt;
+&lt;p&gt;以下均为我熟练使用的技能&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Web 开发：PHP/Hack/Node&lt;/li&gt;
+&lt;li&gt;Web 框架：ThinkPHP/Yaf/Yii/Lavarel/LazyPHP&lt;/li&gt;
+&lt;li&gt;前端框架：Bootstrap/AngularJS/EmberJS/HTML5/Cocos2dJS/ionic&lt;/li&gt;
+&lt;li&gt;前端工具：Bower/Gulp/SaSS/LeSS/PhoneGap&lt;/li&gt;
+&lt;li&gt;数据库相关：MySQL/PgSQL/PDO/SQLite&lt;/li&gt;
+&lt;li&gt;版本管理、文档和自动化部署工具：Svn/Git/PHPDoc/Phing/Composer&lt;/li&gt;
+&lt;li&gt;单元测试：PHPUnit/SimpleTest/Qunit&lt;/li&gt;
+&lt;li&gt;云和开放平台：SAE/BAE/AWS/微博开放平台/微信应用开发&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;heading9&#34;&gt;自我评价（可选）&lt;/h1&gt;
+&lt;p&gt;自我发挥。切记不要过度自夸！！！&lt;/p&gt;
+&lt;h3 id=&#34;heading10&#34;&gt;感谢您花时间阅读我的简历，期待能有机会和您共事。&lt;/h3&gt;
+</description>
+            </item>
+        
+    </channel>
+</rss>

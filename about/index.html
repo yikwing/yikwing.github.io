@@ -1,340 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title> | LoveIt Theme</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noodp" />
-<meta name="Description" content="LoveIt Theme Demo">
-<link rel="canonical" href="https://yikwing.github.io/about/" />
-<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="联系方式  姓名：荣毅 手机：18664379256 Email：yikwing14@126.com 微信：yikwing  个人信息  技术博客：http://yikwing.github.io/  Github：https://github.com/yikwing  期望职位：Android 开发  项目经历 追求体育 项目 项目描述 追球体育是一个利用 Weex 技术实现三端开发,大大提高开发时间.
-责任描述 主要可以从下面三点来写：
- 在这个项目中你负责了什么、做了什么、担任了什么角色 从这个项目中你学会了那些东西，使用到了那些技术，学会了那些新技术的使用 另外项目描述中，最好可以体现自己的综合素质，比如你是如何协调项目组成员协同开发的或者在遇到某一个棘手的问题的时候你是如何解决的。  开源项目和技术文章 开源项目  Java-Guide ：一份涵盖大部分 Java 程序员所需要掌握的核心知识。Star:3.9K; Fork:0.9k。  技术文章推荐  可能是把 Java 内存区域讲的最清楚的一篇文章 搞定 JVM 垃圾回收就是这么简单 前端&amp;后端程序员必备的 Linux 基础知识 可能是把 Docker 的概念讲的最清楚的一篇文章  技能清单 以下均为我熟练使用的技能
- Web 开发：PHP/Hack/Node Web 框架：ThinkPHP/Yaf/Yii/Lavarel/LazyPHP 前端框架：Bootstrap/AngularJS/EmberJS/HTML5/Cocos2dJS/ionic 前端工具：Bower/Gulp/SaSS/LeSS/PhoneGap 数据库相关：MySQL/PgSQL/PDO/SQLite 版本管理、文档和自动化部署工具：Svn/Git/PHPDoc/Phing/Composer 单元测试：PHPUnit/SimpleTest/Qunit 云和开放平台：SAE/BAE/AWS/微博开放平台/微信应用开发  自我评价（可选） 自我发挥。切记不要过度自夸！！！"/>
-<script type="application/ld+json">
-    {
-    "@context": "http://schema.org",
-    "@type": "BlogPosting",
-    "headline": "",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https:\/\/yikwing.github.io\/about\/"
-    },
-    
-        "image": {
-            "@type": "ImageObject",
-            "url": "https:\/\/yikwing.github.io\/cover.png",
-            "width":  800 ,
-            "height":  600 
-        },
-    
-    "genre": "page",
-    
-    "wordcount":  57 ,
-    "url": "https:\/\/yikwing.github.io\/about\/",
-    
-        "datePublished": "2019-02-17T00:00:00\x2b00:00",
-    
-    
-        "dateModified": "2019-02-17T00:00:00\x2b00:00",
-    
-    
-        "license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.",
-    
-    
-        "publisher": {
-            "@type": "Organization",
-            "name": "XXXX",
-            "logo": {
-            "@type": "ImageObject",
-            "url": "https:\/\/yikwing.github.io\/logo.png",
-            "width":  127 ,
-            "height":  40 
-            }
-        },
-    
-    
-    "description": ""
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+
+</head>
+<body>
+	
+</body>
+
+<script>
+  function getQueryString(name) { 
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+        var r = window.location.search.substr(1).match(reg); 
+        if (r != null) return unescape(r[2]); 
+        return null; 
+    } 
+  
+  var param = getQueryString('param');
+  if(param!=null){
+     window.location.href = param;
+  }else{
+  	f_close('closeWindow');
+  }
+  
+  
+function f_close(){
+  if(typeof(WeixinJSBridge)!="undefined"){
+    WeixinJSBridge.call('closeWindow');
+  }else{
+    if (navigator.userAgent.indexOf("MSIE") > 0) {  
+      if (navigator.userAgent.indexOf("MSIE 6.0") > 0) {  
+        window.opener = null; window.close();  
+      } else {  
+        window.open('', '_top'); window.top.close();  
+      }  
+    } else if (navigator.userAgent.indexOf("Firefox") > 0) {  
+      window.location.href = 'about:blank ';  
+      //window.history.go(-2);  
+    } else {  
+      window.opener = null;   
+      window.open('', '_self', '');  
+      window.close();  
     }
-    </script>
-<link rel="stylesheet" href="/css/style.min.css">
-<link rel="stylesheet" href="/css/lib/fontawesome-free/all.min.min.css">
-
-<link rel="stylesheet" href="/css/lib/animate/animate.min.min.css">
-
-    </head>
-    <body>
-        <script>
-            window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
-            window.isDark && document.body.classList.add('dark-theme');
-        </script>
-        <div class="wrapper">
-            <nav class="navbar">
-    <div class="navbar-container">
-        <div class="navbar-header animated bounceIn">
-            <a href="https://yikwing.github.io/">LoveIt Theme</a>
-        </div>
-        <div class="navbar-menu">
-            
-            
-                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
-            
-                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
-            
-                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
-            
-                <a class="menu-item active" href="https://yikwing.github.io/about/" title=""></a>
-            
-            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
-        </div>
-    </div>
-</nav>
-<nav class="navbar-mobile">
-     <div class="navbar-container">
-        <div class="navbar-header">
-            <div class="navbar-header-title animated bounceIn">
-                <a href="https://yikwing.github.io/">LoveIt Theme</a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="navbar-menu" id="mobile-menu">
-            
-            
-                <a class="menu-item" href="https://yikwing.github.io/posts" title="">Posts</a>
-            
-                <a class="menu-item" href="https://yikwing.github.io/tags" title="">Tags</a>
-            
-                <a class="menu-item" href="https://yikwing.github.io/categories" title="">Categories</a>
-            
-                <a class="menu-item" href="https://yikwing.github.io/about/" title=""></a>
-            
-            <a href="javascript:void(0);" class="theme-switch"><i class="fas fa-adjust fa-rotate-180 fa-fw"></i></a>
-        </div>
-    </div>
-</nav><main class="main">
-                <div class="container">
-                    
-    <div class="post-warp single">
-        <h1 class="post-title animated pulse faster"></h1>
-        <div class="post-content">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <a class="post-dummy-target" id="heading"></a><h1>联系方式</h1>
-<ul>
-<li>姓名：荣毅</li>
-<li>手机：18664379256</li>
-<li>Email：yikwing14@126.com</li>
-<li>微信：yikwing</li>
-</ul>
-<a class="post-dummy-target" id="heading1"></a><h1>个人信息</h1>
-<ul>
-<li>技术博客：<a href="http://yikwing.github.io/"><a href="http://yikwing.github.io/">http://yikwing.github.io/</a></a>
-<!-- raw HTML omitted -->
-</li>
-<li>Github：<a href="https://github.com/yikwing"><a href="https://github.com/yikwing">https://github.com/yikwing</a> </a></li>
-<li>期望职位：Android 开发</li>
-</ul>
-<a class="post-dummy-target" id="heading2"></a><h1>项目经历</h1>
-<a class="post-dummy-target" id="-"></a><h2>追求体育 项目</h2>
-<a class="post-dummy-target" id="heading3"></a><h3>项目描述</h3>
-<!-- raw HTML omitted -->
-<p>追球体育是一个利用 Weex 技术实现三端开发,大大提高开发时间.</p>
-<a class="post-dummy-target" id="heading4"></a><h3>责任描述</h3>
-<p>主要可以从下面三点来写：</p>
-<ol>
-<li>在这个项目中你负责了什么、做了什么、担任了什么角色</li>
-<li>从这个项目中你学会了那些东西，使用到了那些技术，学会了那些新技术的使用</li>
-<li>另外项目描述中，最好可以体现自己的综合素质，比如你是如何协调项目组成员协同开发的或者在遇到某一个棘手的问题的时候你是如何解决的。</li>
-</ol>
-<a class="post-dummy-target" id="heading5"></a><h1>开源项目和技术文章</h1>
-<a class="post-dummy-target" id="heading6"></a><h2>开源项目</h2>
-<ul>
-<li><a href="https://github.com/Snailclimb/Java-Guide">Java-Guide</a> ：一份涵盖大部分 Java 程序员所需要掌握的核心知识。Star:3.9K; Fork:0.9k。</li>
-</ul>
-<a class="post-dummy-target" id="heading7"></a><h2>技术文章推荐</h2>
-<ul>
-<li><a href="https://juejin.im/post/5b7d69e4e51d4538ca5730cb">可能是把 Java 内存区域讲的最清楚的一篇文章</a></li>
-<li><a href="https://juejin.im/post/5b85ea54e51d4538dd08f601">搞定 JVM 垃圾回收就是这么简单</a></li>
-<li><a href="https://juejin.im/post/5b3b19856fb9a04fa42f8c71">前端&amp;后端程序员必备的 Linux 基础知识</a></li>
-<li><a href="https://juejin.im/post/5b260ec26fb9a00e8e4b031a">可能是把 Docker 的概念讲的最清楚的一篇文章</a></li>
-</ul>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<a class="post-dummy-target" id="heading8"></a><h1>技能清单</h1>
-<p>以下均为我熟练使用的技能</p>
-<ul>
-<li>Web 开发：PHP/Hack/Node</li>
-<li>Web 框架：ThinkPHP/Yaf/Yii/Lavarel/LazyPHP</li>
-<li>前端框架：Bootstrap/AngularJS/EmberJS/HTML5/Cocos2dJS/ionic</li>
-<li>前端工具：Bower/Gulp/SaSS/LeSS/PhoneGap</li>
-<li>数据库相关：MySQL/PgSQL/PDO/SQLite</li>
-<li>版本管理、文档和自动化部署工具：Svn/Git/PHPDoc/Phing/Composer</li>
-<li>单元测试：PHPUnit/SimpleTest/Qunit</li>
-<li>云和开放平台：SAE/BAE/AWS/微博开放平台/微信应用开发</li>
-</ul>
-<a class="post-dummy-target" id="heading9"></a><h1>自我评价（可选）</h1>
-<p>自我发挥。切记不要过度自夸！！！</p>
-<a class="post-dummy-target" id="heading10"></a><h3>感谢您花时间阅读我的简历，期待能有机会和您共事。</h3>
-
-        </div>
-    </div>
-</div>
-            </main>
-            <footer class="footer">
-    <div class="copyright">
-        <div class="copyright-line">
-            Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a>&nbsp;|&nbsp;Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="external nofollow noopener noreffer">LoveIt<i class="far fa-heart fa-fw"></i></a>
-        </div>
-        <div class="copyright-line">
-            <i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2018 - 2019</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://yikwing.github.io/">yikwing</a></span><span class="license">&nbsp;|&nbsp;<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-    </div>
-</footer>
-
-
-    
-    
-
-
-
-
-    
-    
-
-
-
-
-    
-    
-
-
-
-
-
-    
-    
-
-
-
-    
-    
-
-
-
-    
-    
-
-
-
-
-
-    
-    
-
-
-
-
-
-    
-    
-
-
-
-    
-    
-
-
-
-
-
-    
-    
-
-
-
-
-    
-    
-
-
-
-
-    
-    
-
-
-
-    
-    
-
-
-
-
-
-    
-    
-
-
-<script src="/js/lib/jquery/jquery.slim.min.min.js"></script>
-<script src="/js/lib/lazysizes/lazysizes.min.min.js"></script>
-<script src="/js/lib/smooth-scroll/smooth-scroll.polyfills.min.min.js"></script><script>window.scroll = new SmoothScroll('[data-scroll]', {speed: 300, speedAsDuration: true});</script>
-
-
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-
-
-
-
-
-<script src="/js/blog.min.js"></script>
-
-
-    
-</div>
-        <a href="#" class="dynamic-to-top" id="dynamic-to-top" data-scroll><span>&nbsp;</span></a>
-    </body>
+  }
+}
+   
+</script>
 </html>
